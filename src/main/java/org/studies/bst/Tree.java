@@ -1,25 +1,35 @@
 package org.studies.bst;
 
-public interface Tree<T extends Comparable<?>> {
+public interface Tree<T extends Comparable<T>> {
 
     default String printTree() {
         return "";
     }
+
     void insert(T value);
 
     Node<T> getRoot();
 
 
-    public static class Node<T> {
-        private T value;
+    class Node<T extends Comparable<T>> {
+        private final T value;
         private Node<T> right;
         private Node<T> left;
+
         public Node(T value) {
             this.value = value;
         }
 
         public T getValue() {
             return value;
+        }
+
+        public Node<T> getLeftNode() {
+            return left;
+        }
+
+        public void setLeft(Node<T> node) {
+            this.left = node;
         }
     }
 
