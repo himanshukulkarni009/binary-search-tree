@@ -25,7 +25,7 @@ public class Tester {
     }
 
     @Test
-    public void testChildAddition() {
+    public void testLeftChildInsertion() {
         bst.insert(2);
         bst.insert(1);
 
@@ -36,4 +36,43 @@ public class Tester {
         Assert.assertEquals(1, value);
     }
 
+    @Test
+    public void testLeftChildInsertion_level2() {
+        bst.insert(3);
+        bst.insert(2);
+        bst.insert(1);
+
+        Node<Integer> root = bst.getRoot();
+        Node<Integer> left_level1 = root.getLeftNode();
+        Node<Integer> left_level2 = left_level1.getLeftNode();
+
+        int value = left_level2.getValue();
+        Assert.assertEquals(1, value);
+    }
+
+    @Test
+    public void testLeftRightChildInsertion_level2() {
+        bst.insert(4);
+        bst.insert(2);
+        bst.insert(3);
+
+        Node<Integer> root = bst.getRoot();
+        Node<Integer> left_level1 = root.getLeftNode();
+        Node<Integer> right_level2 = left_level1.getRightNode();
+
+        int value = right_level2.getValue();
+        Assert.assertEquals(3, value);
+    }
+
+    @Test
+    public void testRightChildInsertion() {
+        bst.insert(2);
+        bst.insert(3);
+
+        Node<Integer> root = bst.getRoot();
+        Node<Integer> rightChild = root.getRightNode();
+
+        int value = rightChild.getValue();
+        Assert.assertEquals(3, value);
+    }
 }

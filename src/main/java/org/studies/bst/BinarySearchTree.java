@@ -8,19 +8,33 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
     @Override
     public void insert(T value) {
         Node<T> node = new Node<>(value);
-        if (root == null)
+        if (root == null) {
             root = node;
+            return;
+        }
 
-        int compareTo = root.getValue().compareTo(value);
-        if (compareTo > 0) {
+        Node<T> currentNode = root;
 
-            insertToLeft(value, root);
+        while (true) {
+            int compareTo = currentNode.getValue().compareTo(value);
+
+            if (compareTo > 0) {
+                if(currentNode.getLeftNode() == null) {
+                    currentNode.setLeft(new Node<>(value));
+                    return;
+                }
+                currentNode = currentNode.getLeftNode();
+            } else if (compareTo < 0) {
+                if(currentNode.getRightNode() == null) {
+                    currentNode.setRight(new Node<>(value));
+                    return;
+                }
+                currentNode = currentNode.getRightNode();
+            }
         }
     }
 
-    private void insertToLeft(T value, Node<T> node) {
-        node.setLeft(new Node<>(value));
-    }
+
 
     @Override
     public Node<T> getRoot() {

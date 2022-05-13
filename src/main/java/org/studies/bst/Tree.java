@@ -31,6 +31,14 @@ public interface Tree<T extends Comparable<T>> {
         public void setLeft(Node<T> node) {
             this.left = node;
         }
+
+        public Node<T> getRightNode() {
+            return right;
+        }
+
+        public void setRight(Node<T> node) {
+            this.right = node;
+        }
     }
 
 }
