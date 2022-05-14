@@ -10,6 +10,8 @@ public interface Tree<T extends Comparable<T>> {
 
     Node<T> getRoot();
 
+    boolean contains(T value);
+
 
     class Node<T extends Comparable<T>> {
         private final T value;

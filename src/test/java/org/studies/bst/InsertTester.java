@@ -5,7 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.studies.bst.Tree.Node;
 
-public class Tester {
+public class InsertTester {
 
     Tree<Integer> bst;
 
